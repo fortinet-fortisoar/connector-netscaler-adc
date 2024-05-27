@@ -1,0 +1,242 @@
+{
+  "name": "netscaler-adc",
+  "label": "NetScaler ADC",
+  "version": "1.0.0",
+  "description": "The NetScaler appliance is an application switch which performs application-specific traffic analysis to intelligently distribute, optimize, and secure Layer 4-Layer 7 (L4–L7) network traffic for web applications.",
+  "publisher": "Fortinet",
+  "cs_approved": false,
+  "cs_compatible": true,
+  "category": "Firewall and Network Protection",
+  "icon_small_name": "small.png",
+  "icon_large_name": "large.png",
+  "help_online": "",
+  "configuration": {
+    "fields": [
+      {
+        "title": "Server URL",
+        "type": "text",
+        "name": "server_url",
+        "required": true,
+        "editable": true,
+        "visible": true,
+        "value": "https://gitlab.com",
+        "tooltip": "IP address or hostname of the NetScaler server to which you will connect and perform automated operations.",
+        "description": "IP address or hostname of the NetScaler server to which you will connect and perform automated operations."
+      },
+      {
+        "title": "API Token",
+        "type": "password",
+        "name": "api_key",
+        "required": true,
+        "editable": true,
+        "visible": true,
+        "tooltip": "Specify the API Token that is generated through the NetScaler server",
+        "description": "Specify the API Token that is generated through the NetScaler server"
+      },
+      {
+        "title": "Verify SSL",
+        "name": "verify_ssl",
+        "type": "checkbox",
+        "required": false,
+        "editable": true,
+        "visible": true,
+        "value": true,
+        "tooltip": "Specifies whether the SSL certificate for the server is to be verified or not.By default, this option is set as True.",
+        "description": "Specifies whether the SSL certificate for the server is to be verified or not.By default, this option is set as True."
+      }
+    ]
+  },
+  "operations": [
+    {
+      "operation": "create_acl_resource",
+      "title": "Create NetScaler ACL Resource",
+      "description": "Creates a new NetScaler ACL(Access Control List) entry resource in your NetScaler server based on the parameters provided",
+      "category": "investigation",
+      "annotation": "create_acl_resource",
+      "enabled": true,
+      "output_schema": {},
+      "parameters": [
+        {
+          "title": "ACL Name",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "aclname",
+          "description": "Specify the Name for the extended ACL rule",
+          "tooltip": "Specify the Name for the extended ACL rule"
+        },
+        {
+          "title": "ACL Action",
+          "name": "aclaction",
+          "visible": true,
+          "required": false,
+          "editable": true,
+          "type": "select",
+          "options": [
+            "ALLOW",
+            "BRIDGE",
+            "DENY"
+          ],
+          "tooltip": "Specify the action to perform on incoming IPv4 packets that match the extended ACL rule",
+          "description": "Specify the action to perform on incoming IPv4 packets that match the extended ACL rule"
+        },
+        {
+          "title": "Source IP",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "srcip",
+          "description": "Specify the IP address or range of IP addresses to match against the source IP address of an incoming IPv4 packet",
+          "tooltip": "Specify the IP address or range of IP addresses to match against the source IP address of an incoming IPv4 packet"
+        },
+        {
+          "title": "Destination IP",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "destip",
+          "description": "Specify the IP address or range of IP addresses to match against the destination IP address of an incoming IPv4 packet",
+          "tooltip": "Specify the IP address or range of IP addresses to match against the destination IP address of an incoming IPv4 packet"
+        },
+        {
+          "title": "Other Fields",
+          "tooltip": "Specify fields in the JSON format to be sent as json_data according to NetScaler REST API Documentation. https://developer-docs.netscaler.com/en-us/adc-nitro-api/current-release/configuration/ns/nsacl.html",
+          "description": "Specify fields in the JSON format to be sent as json_data according to NetScaler REST API Documentation. https://developer-docs.netscaler.com/en-us/adc-nitro-api/current-release/configuration/ns/nsacl.html",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "json",
+          "name": "other_fields"
+        }
+      ]
+    },
+    {
+      "operation": "get_acl_resource",
+      "title": "Get NetScaler ACL Resource",
+      "description": "Retrieves NetScaler ACL(Access Control List) entry resource in your NetScaler server based on the parameters provided",
+      "category": "investigation",
+      "annotation": "get_acl_resource",
+      "enabled": true,
+      "output_schema": {},
+      "parameters": [
+        {
+          "title": "ACL Name",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "aclname",
+          "description": "Specify the Name for the extended ACL rule that you want to retrieve. By default all ACL will be fetched",
+          "tooltip": "Specify the Name for the extended ACL rule that you want to retrieve. By default all ACL will be fetched"
+        },
+        {
+          "title": "Page Size",
+          "name": "pagesize",
+          "visible": true,
+          "required": false,
+          "editable": true,
+          "type": "integer",
+          "tooltip": "Specify the Number of results to return per page.",
+          "description": "Specify the Number of results to return per page."
+        },
+        {
+          "title": "Page Number",
+          "name": "pageno",
+          "visible": true,
+          "required": false,
+          "editable": true,
+          "type": "integer",
+          "tooltip": "Specify the page number of results to be fetched",
+          "description": "Specify the page number of results to be fetched"
+        },
+        {
+          "title": "Other Fields",
+          "tooltip": "Specify fields in the JSON format to be sent as json_data according to NetScaler REST API Documentation. https://developer-docs.netscaler.com/en-us/adc-nitro-api/current-release/configuration/ns/nsacl.html",
+          "description": "Specify fields in the JSON format to be sent as json_data according to NetScaler REST API Documentation. https://developer-docs.netscaler.com/en-us/adc-nitro-api/current-release/configuration/ns/nsacl.html",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "json",
+          "name": "other_fields"
+        }
+      ]
+    },
+    {
+      "operation": "delete_acl_resource",
+      "title": "Delete NetScaler ACL Resource",
+      "description": "Deletes NetScaler ACL(Access Control List) entry resource in your NetScaler server based on the parameters provided",
+      "category": "investigation",
+      "annotation": "delete_acl_resource",
+      "enabled": true,
+      "output_schema": {},
+      "parameters": [
+        {
+          "title": "ACL Name",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "aclname",
+          "description": "Specify the Name for the extended ACL rule that you want to delete",
+          "tooltip": "Specify the Name for the extended ACL rule that you want to delete"
+        }
+      ]
+    },
+    {
+      "operation": "delete_acl_resource",
+      "title": "Delete NetScaler ACL Resource",
+      "description": "Deletes NetScaler ACL(Access Control List) entry resource in your NetScaler server based on the parameters provided",
+      "category": "investigation",
+      "annotation": "delete_acl_resource",
+      "enabled": true,
+      "output_schema": {},
+      "parameters": [
+        {
+          "title": "ACL Name",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "aclname",
+          "description": "Specify the Name for the extended ACL rule that you want to delete",
+          "tooltip": "Specify the Name for the extended ACL rule that you want to delete"
+        }
+      ]
+    },
+    {
+      "operation": "change_acl_resource_state",
+      "title": "Change NetScaler ACL Resource State",
+      "description": "Changes NetScaler ACL(Access Control List) entry resource state(Enable/Disable) in your NetScaler server based on the parameters provided",
+      "category": "investigation",
+      "annotation": "change_acl_resource_state",
+      "enabled": true,
+      "output_schema": {},
+      "parameters": [
+        {
+          "title": "ACL Name",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "aclname",
+          "description": "Specify the Name for the extended ACL rule that you want to delete",
+          "tooltip": "Specify the Name for the extended ACL rule that you want to delete"
+        },
+        {
+          "title": "Action",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "select",
+          "options": ["enable","disable"],
+          "name": "action",
+          "description": "Specify the Action for the extended ACL rule to apply",
+          "tooltip": "Specify the Action for the extended ACL rule to apply"
+        }
+      ]
+    }
+  ]
+}
