@@ -72,7 +72,7 @@ def create_acl_resource(config: dict, params: dict):
         params = _build_payload(params)
         endpoint = '/nitro/v1/config/nsacl'
 
-        return ns.make_request(endpoint=endpoint, method='POST', data=json.dumps({"nsacl":params}))
+        return ns.make_request(endpoint=endpoint, method='POST', data=json.dumps({"nsacl": params}))
     except Exception as err:
         logger.error(str(err))
         raise ConnectorError(str(err))
@@ -109,7 +109,8 @@ def change_acl_resource_state(config: dict, params: dict):
         params = _build_payload(params)
         endpoint = "/nitro/v1/config/nsacl"
 
-        return ns.make_request(endpoint=endpoint, method='POST', data=json.loads({"nsacl": params}))
+        return ns.make_request(endpoint=endpoint, method='POST', params=params.pop('action'),
+                               data=json.dumps({"nsacl": params}))
     except Exception as err:
         logger.error(str(err))
         raise ConnectorError(str(err))
