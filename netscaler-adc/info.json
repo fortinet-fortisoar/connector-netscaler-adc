@@ -67,21 +67,6 @@
           "tooltip": "Specify the Name for the extended ACL rule"
         },
         {
-          "title": "ACL Action",
-          "name": "aclaction",
-          "visible": true,
-          "required": false,
-          "editable": true,
-          "type": "select",
-          "options": [
-            "ALLOW",
-            "BRIDGE",
-            "DENY"
-          ],
-          "tooltip": "Specify the action to perform on incoming IPv4 packets that match the extended ACL rule",
-          "description": "Specify the action to perform on incoming IPv4 packets that match the extended ACL rule"
-        },
-        {
           "title": "Source IP",
           "required": true,
           "editable": true,
@@ -100,6 +85,21 @@
           "name": "destip",
           "description": "Specify the IP address or range of IP addresses to match against the destination IP address of an incoming IPv4 packet",
           "tooltip": "Specify the IP address or range of IP addresses to match against the destination IP address of an incoming IPv4 packet"
+        },
+        {
+          "title": "ACL Action",
+          "name": "aclaction",
+          "visible": true,
+          "required": false,
+          "editable": true,
+          "type": "select",
+          "options": [
+            "ALLOW",
+            "BRIDGE",
+            "DENY"
+          ],
+          "tooltip": "Specify the action to perform on incoming IPv4 packets that match the extended ACL rule",
+          "description": "Specify the action to perform on incoming IPv4 packets that match the extended ACL rule"
         },
         {
           "title": "Other Fields",
@@ -165,27 +165,6 @@
       ]
     },
     {
-      "operation": "delete_acl_resource",
-      "title": "Delete NetScaler ACL Resource",
-      "description": "Deletes NetScaler ACL(Access Control List) entry resource in your NetScaler server based on the parameters provided",
-      "category": "investigation",
-      "annotation": "delete_acl_resource",
-      "enabled": true,
-      "output_schema": {},
-      "parameters": [
-        {
-          "title": "ACL Name",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "aclname",
-          "description": "Specify the Name for the extended ACL rule that you want to delete",
-          "tooltip": "Specify the Name for the extended ACL rule that you want to delete"
-        }
-      ]
-    },
-    {
       "operation": "change_acl_resource_state",
       "title": "Change NetScaler ACL Resource State",
       "description": "Changes NetScaler ACL(Access Control List) entry resource state(Enable/Disable) in your NetScaler server based on the parameters provided",
@@ -217,6 +196,27 @@
           "name": "action",
           "description": "Specify the Action for the extended ACL rule to apply",
           "tooltip": "Specify the Action for the extended ACL rule to apply"
+        }
+      ]
+    },
+    {
+      "operation": "delete_acl_resource",
+      "title": "Delete NetScaler ACL Resource",
+      "description": "Deletes NetScaler ACL(Access Control List) entry resource in your NetScaler server based on the parameters provided",
+      "category": "investigation",
+      "annotation": "delete_acl_resource",
+      "enabled": true,
+      "output_schema": {},
+      "parameters": [
+        {
+          "title": "ACL Name",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "aclname",
+          "description": "Specify the Name for the extended ACL rule that you want to delete",
+          "tooltip": "Specify the Name for the extended ACL rule that you want to delete"
         }
       ]
     }

@@ -34,16 +34,15 @@ For the procedure to configure a connector, click [here](https://docs.fortinet.c
 The following automated operations can be included in playbooks and you can also use the annotations to access operations from FortiSOAR&trade; release 4.10.0 and onwards:
 <table border=1><thead><tr><th>Function</th><th>Description</th><th>Annotation and Category</th></tr></thead><tbody><tr><td>Create NetScaler ACL Resource</td><td>Creates a new NetScaler ACL(Access Control List) entry resource in your NetScaler server based on the parameters provided</td><td>create_acl_resource <br/>Investigation</td></tr>
 <tr><td>Get NetScaler ACL Resource</td><td>Retrieves NetScaler ACL(Access Control List) entry resource in your NetScaler server based on the parameters provided</td><td>get_acl_resource <br/>Investigation</td></tr>
-<tr><td>Delete NetScaler ACL Resource</td><td>Deletes NetScaler ACL(Access Control List) entry resource in your NetScaler server based on the parameters provided</td><td>delete_acl_resource <br/>Investigation</td></tr>
-<tr><td>Delete NetScaler ACL Resource</td><td>Deletes NetScaler ACL(Access Control List) entry resource in your NetScaler server based on the parameters provided</td><td>delete_acl_resource <br/>Investigation</td></tr>
 <tr><td>Change NetScaler ACL Resource State</td><td>Changes NetScaler ACL(Access Control List) entry resource state(Enable/Disable) in your NetScaler server based on the parameters provided</td><td>change_acl_resource_state <br/>Investigation</td></tr>
+<tr><td>Delete NetScaler ACL Resource</td><td>Deletes NetScaler ACL(Access Control List) entry resource in your NetScaler server based on the parameters provided</td><td>delete_acl_resource <br/>Investigation</td></tr>
 </tbody></table>
 ### operation: Create NetScaler ACL Resource
 #### Input parameters
 <table border=1><thead><tr><th>Parameter</th><th>Description</th></tr></thead><tbody><tr><td>ACL Name</td><td>Specify the Name for the extended ACL rule
-</td></tr><tr><td>ACL Action</td><td>Specify the action to perform on incoming IPv4 packets that match the extended ACL rule
 </td></tr><tr><td>Source IP</td><td>Specify the IP address or range of IP addresses to match against the source IP address of an incoming IPv4 packet
 </td></tr><tr><td>Destination IP</td><td>Specify the IP address or range of IP addresses to match against the destination IP address of an incoming IPv4 packet
+</td></tr><tr><td>ACL Action</td><td>Specify the action to perform on incoming IPv4 packets that match the extended ACL rule
 </td></tr><tr><td>Other Fields</td><td>Specify fields in the JSON format to be sent as json_data according to NetScaler REST API Documentation. https://developer-docs.netscaler.com/en-us/adc-nitro-api/current-release/configuration/ns/nsacl.html
 </td></tr></tbody></table>
 #### Output
@@ -59,24 +58,17 @@ The following automated operations can be included in playbooks and you can also
 #### Output
 
  The output contains a non-dictionary value.
-### operation: Delete NetScaler ACL Resource
-#### Input parameters
-<table border=1><thead><tr><th>Parameter</th><th>Description</th></tr></thead><tbody><tr><td>ACL Name</td><td>Specify the Name for the extended ACL rule that you want to delete
-</td></tr></tbody></table>
-#### Output
-
- The output contains a non-dictionary value.
-### operation: Delete NetScaler ACL Resource
-#### Input parameters
-<table border=1><thead><tr><th>Parameter</th><th>Description</th></tr></thead><tbody><tr><td>ACL Name</td><td>Specify the Name for the extended ACL rule that you want to delete
-</td></tr></tbody></table>
-#### Output
-
- The output contains a non-dictionary value.
 ### operation: Change NetScaler ACL Resource State
 #### Input parameters
 <table border=1><thead><tr><th>Parameter</th><th>Description</th></tr></thead><tbody><tr><td>ACL Name</td><td>Specify the Name for the extended ACL rule that you want to delete
 </td></tr><tr><td>Action</td><td>Specify the Action for the extended ACL rule to apply
+</td></tr></tbody></table>
+#### Output
+
+ The output contains a non-dictionary value.
+### operation: Delete NetScaler ACL Resource
+#### Input parameters
+<table border=1><thead><tr><th>Parameter</th><th>Description</th></tr></thead><tbody><tr><td>ACL Name</td><td>Specify the Name for the extended ACL rule that you want to delete
 </td></tr></tbody></table>
 #### Output
 
@@ -86,7 +78,6 @@ The `Sample - netscaler-adc - 1.0.0` playbook collection comes bundled with the 
 
 - Change NetScaler ACL Resource State
 - Create NetScaler ACL Resource
-- Delete NetScaler ACL Resource
 - Delete NetScaler ACL Resource
 - Get NetScaler ACL Resource
 
