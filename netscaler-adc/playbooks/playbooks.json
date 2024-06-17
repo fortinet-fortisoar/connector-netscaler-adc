@@ -1,0 +1,306 @@
+{
+  "type": "workflow_collections",
+  "data": [
+    {
+      "uuid": "f1df15c7-c35a-4241-99e2-faa7600671e1",
+      "@type": "WorkflowCollection",
+      "workflows": [
+        {
+          "@type": "Workflow",
+          "uuid": "52364105-519d-4951-9d53-610dc8f7c3aa",
+          "collection": "/api/3/workflow_collections/f1df15c7-c35a-4241-99e2-faa7600671e1",
+          "steps": [
+            {
+              "uuid": "58cd4844-a582-4155-8382-5f814218242e",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "step_variables": {
+                  "input": {
+                    "params": []
+                  }
+                }
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62"
+            },
+            {
+              "uuid": "e8514366-c66d-4618-9ff0-c7ce1beafcda",
+              "@type": "WorkflowStep",
+              "name": "Create NetScaler ACL Resource",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "NetScaler ADC",
+                "config": "",
+                "params": {
+                  "aclname": "",
+                  "aclaction": "",
+                  "srcip": "",
+                  "destip": "",
+                  "other_fields": ""
+                },
+                "version": "1.0.0",
+                "connector": "netscaler-adc",
+                "operation": "create_acl_resource",
+                "operationTitle": "Create NetScaler ACL Resource"
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "triggerLimit": null,
+          "description": "Creates a new NetScaler ACL(Access Control List) entry resource in your NetScaler server based on the parameters provided",
+          "name": "Create NetScaler ACL Resource",
+          "tag": "#NetScaler ADC",
+          "recordTags": [
+            "Netscaler",
+            "netscaler-adc"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/58cd4844-a582-4155-8382-5f814218242e",
+          "routes": [
+            {
+              "uuid": "71bc75eb-0f53-4be9-8c4f-6a3955e02dfc",
+              "@type": "WorkflowRoute",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Create NetScaler ACL Resource",
+              "sourceStep": "/api/3/workflow_steps/58cd4844-a582-4155-8382-5f814218242e",
+              "targetStep": "/api/3/workflow_steps/e8514366-c66d-4618-9ff0-c7ce1beafcda"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "b997455e-f5c3-4fd7-83fc-d4386d3fc7d2",
+          "collection": "/api/3/workflow_collections/f1df15c7-c35a-4241-99e2-faa7600671e1",
+          "steps": [
+            {
+              "uuid": "4a64a4ca-9637-48fc-b34e-f484a2e928aa",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "step_variables": {
+                  "input": {
+                    "params": []
+                  }
+                }
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62"
+            },
+            {
+              "uuid": "1245d502-8545-4031-9aa2-a3592bb91bd7",
+              "@type": "WorkflowStep",
+              "name": "Get NetScaler ACL Resource",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "NetScaler ADC",
+                "config": "",
+                "params": {
+                  "aclname": "",
+                  "pagesize": "",
+                  "pageno": "",
+                  "other_fields": ""
+                },
+                "version": "1.0.0",
+                "connector": "netscaler-adc",
+                "operation": "get_acl_resource",
+                "operationTitle": "Get NetScaler ACL Resource"
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "triggerLimit": null,
+          "description": "Retrieves NetScaler ACL(Access Control List) entry resource in your NetScaler server based on the parameters provided",
+          "name": "Get NetScaler ACL Resource",
+          "tag": "#NetScaler ADC",
+          "recordTags": [
+            "Netscaler",
+            "netscaler-adc"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/4a64a4ca-9637-48fc-b34e-f484a2e928aa",
+          "routes": [
+            {
+              "uuid": "1d56965d-a987-4dc1-b238-07ffdcd4ee9b",
+              "@type": "WorkflowRoute",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Get NetScaler ACL Resource",
+              "sourceStep": "/api/3/workflow_steps/4a64a4ca-9637-48fc-b34e-f484a2e928aa",
+              "targetStep": "/api/3/workflow_steps/1245d502-8545-4031-9aa2-a3592bb91bd7"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "d273203f-ec3b-44cd-be45-1389e857c1bd",
+          "collection": "/api/3/workflow_collections/f1df15c7-c35a-4241-99e2-faa7600671e1",
+          "steps": [
+            {
+              "uuid": "cd33cec9-cb7f-4f96-97b9-0de2fa0a3b06",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "step_variables": {
+                  "input": {
+                    "params": []
+                  }
+                }
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62"
+            },
+            {
+              "uuid": "e0a567d9-1107-4c5b-8ab9-4c53592f21c0",
+              "@type": "WorkflowStep",
+              "name": "Delete NetScaler ACL Resource",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "NetScaler ADC",
+                "config": "",
+                "params": {
+                  "aclname": ""
+                },
+                "version": "1.0.0",
+                "connector": "netscaler-adc",
+                "operation": "delete_acl_resource",
+                "operationTitle": "Delete NetScaler ACL Resource"
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "triggerLimit": null,
+          "description": "Deletes NetScaler ACL(Access Control List) entry resource in your NetScaler server based on the parameters provided",
+          "name": "Delete NetScaler ACL Resource",
+          "tag": "#NetScaler ADC",
+          "recordTags": [
+            "Netscaler",
+            "netscaler-adc"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/cd33cec9-cb7f-4f96-97b9-0de2fa0a3b06",
+          "routes": [
+            {
+              "uuid": "4332cdc0-39e0-43e4-aa05-c90279321a6f",
+              "@type": "WorkflowRoute",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Delete NetScaler ACL Resource",
+              "sourceStep": "/api/3/workflow_steps/cd33cec9-cb7f-4f96-97b9-0de2fa0a3b06",
+              "targetStep": "/api/3/workflow_steps/e0a567d9-1107-4c5b-8ab9-4c53592f21c0"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "ef47a594-9ac1-46bd-af9a-99b11bcaccec",
+          "collection": "/api/3/workflow_collections/f1df15c7-c35a-4241-99e2-faa7600671e1",
+          "steps": [
+            {
+              "uuid": "2ea46145-9d63-4c9c-870c-9e95d892225f",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "step_variables": {
+                  "input": {
+                    "params": []
+                  }
+                }
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62"
+            },
+            {
+              "uuid": "cba9ea44-14fe-4c56-9326-e62720bffcf6",
+              "@type": "WorkflowStep",
+              "name": "Change NetScaler ACL Resource State",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "NetScaler ADC",
+                "config": "",
+                "params": {
+                  "aclname": "",
+                  "action": ""
+                },
+                "version": "1.0.0",
+                "connector": "netscaler-adc",
+                "operation": "change_acl_resource_state",
+                "operationTitle": "Change NetScaler ACL Resource State"
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "triggerLimit": null,
+          "description": "Changes NetScaler ACL(Access Control List) entry resource state(Enable/Disable) in your NetScaler server based on the parameters provided",
+          "name": "Change NetScaler ACL Resource State",
+          "tag": "#NetScaler ADC",
+          "recordTags": [
+            "Netscaler",
+            "netscaler-adc"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/2ea46145-9d63-4c9c-870c-9e95d892225f",
+          "routes": [
+            {
+              "uuid": "500f6696-500a-426b-a856-5c6bfce4c103",
+              "@type": "WorkflowRoute",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Change NetScaler ACL Resource State",
+              "sourceStep": "/api/3/workflow_steps/2ea46145-9d63-4c9c-870c-9e95d892225f",
+              "targetStep": "/api/3/workflow_steps/cba9ea44-14fe-4c56-9326-e62720bffcf6"
+            }
+          ]
+        }
+      ],
+      "name": "Sample - NetScaler ADC - 1.0.0",
+      "description": "The NetScaler appliance is an application switch which performs application-specific traffic analysis to intelligently distribute, optimize, and secure Layer 4-Layer 7 (L4\u2013L7) network traffic for web applications.",
+      "visible": true,
+      "recordTags": [
+        "Netscaler",
+        "netscaler-adc"
+      ]
+    }
+  ]
+}
