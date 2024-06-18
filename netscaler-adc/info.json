@@ -19,7 +19,6 @@
         "required": true,
         "editable": true,
         "visible": true,
-        "value": "https://gitlab.com",
         "tooltip": "IP address or hostname of the NetScaler server to which you will connect and perform automated operations.",
         "description": "IP address or hostname of the NetScaler server to which you will connect and perform automated operations."
       },
