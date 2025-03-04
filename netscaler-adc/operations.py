@@ -1,7 +1,7 @@
 """
 Copyright start
 MIT License
-Copyright (c) 2024 Fortinet Inc
+Copyright (c) 2025 Fortinet Inc
 Copyright end
 """
 import json
@@ -70,9 +70,12 @@ def create_acl_resource(config: dict, params: dict):
     try:
         ns = Netscaler(config)
         params = _build_payload(params)
-        endpoint = '/nitro/v1/config/nsacl'
+        acl_type = params.pop('acl_type')
+        endpoint = '/nitro/v1/config/nsacl' if acl_type == "Extended ACL" else '/nitro/v1/config/nssimpleacl'
+        data = {"nsacl": params} if acl_type == "Extended ACL" else {"nssimpleacl": params}
 
-        return ns.make_request(endpoint=endpoint, method='POST', data=json.dumps({"nsacl": params}))
+        create_response = ns.make_request(endpoint=endpoint, method='POST', data=json.dumps(data))
+        return ns.make_request(endpoint='nitro/v1/config/nsconfig?action=save', method='POST', data=json.dumps({"nsconfig":{}}))
     except Exception as err:
         logger.error(str(err))
         raise ConnectorError(str(err))
@@ -82,8 +85,13 @@ def get_acl_resource(config: dict, params: dict):
     try:
         ns = Netscaler(config)
         params = _build_payload(params)
-        endpoint = f"/nitro/v1/config/nsacl/{params.pop('aclname')}" if params.get(
-            'aclname') is not None else '/nitro/v1/config/nsacl'
+        acl_type = params.pop('acl_type')
+        if acl_type == "Extended ACL":
+            endpoint = f"/nitro/v1/config/nsacl/{params.pop('aclname')}" if params.get(
+                'aclname') is not None else '/nitro/v1/config/nsacl'
+        else:
+            endpoint = f"/nitro/v1/config/nssimpleacl/{params.pop('aclname')}" if params.get(
+                'aclname') is not None else '/nitro/v1/config/nssimpleacl'
 
         return ns.make_request(endpoint=endpoint, method='GET', params=params)
     except Exception as err:
@@ -95,7 +103,8 @@ def delete_acl_resource(config: dict, params: dict):
     try:
         ns = Netscaler(config)
         params = _build_payload(params)
-        endpoint = f"/nitro/v1/config/nsacl/{params.pop('aclname')}"
+        acl_type = params.pop('acl_type')
+        endpoint = f"/nitro/v1/config/nsacl/{params.pop('aclname')}" if acl_type == "Extended ACL" else f"/nitro/v1/config/nssimpleacl/{params.pop('aclname')}"
 
         return ns.make_request(endpoint=endpoint, method='DELETE', params=params)
     except Exception as err:
@@ -107,10 +116,12 @@ def change_acl_resource_state(config: dict, params: dict):
     try:
         ns = Netscaler(config)
         params = _build_payload(params)
-        endpoint = "/nitro/v1/config/nsacl"
+        acl_type = params.pop('acl_type')
+        endpoint = '/nitro/v1/config/nsacl' if acl_type == "Extended ACL" else '/nitro/v1/config/nssimpleacl'
+        data = {"nsacl": params} if acl_type == "Extended ACL" else {"nssimpleacl": params}
 
         return ns.make_request(endpoint=endpoint, method='POST', params=params.pop('action'),
-                               data=json.dumps({"nsacl": params}))
+                               data=json.dumps(data))
     except Exception as err:
         logger.error(str(err))
         raise ConnectorError(str(err))
@@ -120,7 +131,7 @@ def _check_health(config):
     try:
         tg = Netscaler(config)
         endpoint = '/nitro/v1/config/nsacl'
-        response = tg.make_request(endpoint=endpoint, params={'pageno': 1})
+        response = tg.make_request(endpoint=endpoint)
         if response:
             logger.info("NetScaler ADC Connector Available")
             return True

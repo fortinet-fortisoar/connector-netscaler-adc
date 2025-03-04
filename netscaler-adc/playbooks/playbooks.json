@@ -43,7 +43,7 @@
                   "destip": "",
                   "other_fields": ""
                 },
-                "version": "1.0.0",
+                "version": "1.0.1",
                 "connector": "netscaler-adc",
                 "operation": "create_acl_resource",
                 "operationTitle": "Create NetScaler ACL Resource"
@@ -116,7 +116,7 @@
                   "pageno": "",
                   "other_fields": ""
                 },
-                "version": "1.0.0",
+                "version": "1.0.1",
                 "connector": "netscaler-adc",
                 "operation": "get_acl_resource",
                 "operationTitle": "Get NetScaler ACL Resource"
@@ -186,7 +186,7 @@
                 "params": {
                   "aclname": ""
                 },
-                "version": "1.0.0",
+                "version": "1.0.1",
                 "connector": "netscaler-adc",
                 "operation": "delete_acl_resource",
                 "operationTitle": "Delete NetScaler ACL Resource"
@@ -257,7 +257,7 @@
                   "aclname": "",
                   "action": ""
                 },
-                "version": "1.0.0",
+                "version": "1.0.1",
                 "connector": "netscaler-adc",
                 "operation": "change_acl_resource_state",
                 "operationTitle": "Change NetScaler ACL Resource State"
@@ -294,7 +294,7 @@
           ]
         }
       ],
-      "name": "Sample - NetScaler ADC - 1.0.0",
+      "name": "Sample - NetScaler ADC - 1.0.1",
       "description": "The NetScaler appliance is an application switch which performs application-specific traffic analysis to intelligently distribute, optimize, and secure Layer 4-Layer 7 (L4\u2013L7) network traffic for web applications.",
       "visible": true,
       "recordTags": [
