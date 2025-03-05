@@ -1,7 +1,7 @@
 {
   "name": "netscaler-adc",
   "label": "NetScaler ADC",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "The NetScaler appliance is an application switch which performs application-specific traffic analysis to intelligently distribute, optimize, and secure Layer 4-Layer 7 (L4–L7) network traffic for web applications.",
   "publisher": "Fortinet",
   "cs_approved": false,
@@ -9,7 +9,7 @@
   "category": "Firewall and Network Protection",
   "icon_small_name": "small.png",
   "icon_large_name": "large.png",
-  "help_online": "https://github.com/fortinet-fortisoar/connector-netscaler-adc/blob/release/1.0.0/netscaler-adc/docs/NetScalerADC.md",
+  "help_online": "https://github.com/fortinet-fortisoar/connector-netscaler-adc/blob/release/1.0.1/netscaler-adc/docs/NetScalerADC.md",
   "configuration": {
     "fields": [
       {
@@ -55,6 +55,20 @@
       "enabled": true,
       "output_schema": {},
       "parameters": [
+        {
+          "title": "ACL Type",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "select",
+          "options": [
+            "Extended ACL",
+            "Simple ACL"
+          ],
+          "name": "acl_type",
+          "description": "Specify the ACL type as Extended ACL or Simple ACL.",
+          "tooltip": "Specify the ACL type as Extended ACL or Simple ACL."
+        },
         {
           "title": "ACL Name",
           "required": true,
@@ -122,6 +136,20 @@
       "output_schema": {},
       "parameters": [
         {
+          "title": "ACL Type",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "select",
+          "options": [
+            "Extended ACL",
+            "Simple ACL"
+          ],
+          "name": "acl_type",
+          "description": "Specify the ACL type as Extended ACL or Simple ACL.",
+          "tooltip": "Specify the ACL type as Extended ACL or Simple ACL."
+        },
+        {
           "title": "ACL Name",
           "required": false,
           "editable": true,
@@ -173,6 +201,20 @@
       "output_schema": {},
       "parameters": [
         {
+          "title": "ACL Type",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "select",
+          "options": [
+            "Extended ACL",
+            "Simple ACL"
+          ],
+          "name": "acl_type",
+          "description": "Specify the ACL type as Extended ACL or Simple ACL.",
+          "tooltip": "Specify the ACL type as Extended ACL or Simple ACL."
+        },
+        {
           "title": "ACL Name",
           "required": true,
           "editable": true,
@@ -207,6 +249,20 @@
       "enabled": true,
       "output_schema": {},
       "parameters": [
+        {
+          "title": "ACL Type",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "select",
+          "options": [
+            "Extended ACL",
+            "Simple ACL"
+          ],
+          "name": "acl_type",
+          "description": "Specify the ACL type as Extended ACL or Simple ACL.",
+          "tooltip": "Specify the ACL type as Extended ACL or Simple ACL."
+        },
         {
           "title": "ACL Name",
           "required": true,
