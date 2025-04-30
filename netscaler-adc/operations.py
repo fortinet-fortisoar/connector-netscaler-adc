@@ -41,9 +41,17 @@ class Netscaler:
                 if method.upper() == 'DELETE':
                     return response
                 else:
-                    return response.json()
+                    print(response)
+                    try:
+                        if len(response.text) == 0:
+                            logger.info("Response is empty.")
+                            return {}
+                        return response.json()
+                    except Exception as err:
+                        logger.error("Error payload is not json payload:{}".format(response.text))
+                        raise ConnectorError(str(err))
             elif response.status_code == 400:
-                error_response = response.json()
+                error_response = response.json
                 raise ConnectorError(error_response)
             elif response.status_code == 401:
                 error_response = response.json()
@@ -75,7 +83,7 @@ def create_acl_resource(config: dict, params: dict):
         data = {"nsacl": params} if acl_type == "Extended ACL" else {"nssimpleacl": params}
 
         create_response = ns.make_request(endpoint=endpoint, method='POST', data=json.dumps(data))
-        return ns.make_request(endpoint='nitro/v1/config/nsconfig?action=save', method='POST', data=json.dumps({"nsconfig":{}}))
+        return create_response
     except Exception as err:
         logger.error(str(err))
         raise ConnectorError(str(err))
